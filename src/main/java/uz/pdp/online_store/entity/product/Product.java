@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
+import uz.pdp.online_store.entity.shop.Shop;
 import uz.pdp.online_store.enums.Measurement;
 
-import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -30,6 +30,6 @@ public class Product extends Auditable {
     private Picture picture;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Category category;
-    /*Shopning idsiga reference qilinadi*/
-    private String shopID;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Shop shop;
 }

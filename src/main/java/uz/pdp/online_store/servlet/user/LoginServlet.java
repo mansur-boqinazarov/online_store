@@ -1,4 +1,5 @@
-package uz.pdp.online_store.servlets.user;
+package uz.pdp.online_store.servlet.user;
+
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "signup", value = "/signup")
-public class Signup extends HttpServlet {
+@WebServlet(name = "login", value = "/login")
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/signup.jsp").forward(req, resp);
+        req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 
     @Override
