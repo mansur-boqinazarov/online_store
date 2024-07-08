@@ -12,7 +12,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
-    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("uz.pdp");
+    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("onlineshop");
     protected static final EntityManager em = emf.createEntityManager();
 
     private final Class<T> persistentClass;
