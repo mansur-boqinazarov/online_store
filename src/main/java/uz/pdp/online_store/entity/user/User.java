@@ -23,6 +23,8 @@ public class User extends Auditable {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private Role role;
     @Enumerated(EnumType.STRING)
