@@ -1,4 +1,4 @@
-package uz.pdp.online_store.dao.basedao;
+package uz.pdp.online_store.dao.base;
 
 
 import jakarta.persistence.EntityManager;
