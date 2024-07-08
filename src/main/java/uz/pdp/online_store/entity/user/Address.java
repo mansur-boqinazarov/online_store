@@ -20,5 +20,5 @@ public class Address extends Auditable {
     @Column(nullable = false)
     private String apartment;
     @OneToOne(cascade = CascadeType.PERSIST)
-    private User user;
+    private Users user;
 }

@@ -56,13 +56,7 @@ public abstract class BaseDAO<T extends Auditable, ID extends Serializable> {
         return true;
     }
 
-    protected void begin(){
-        em.getTransaction().begin();
-    }
-    protected void commit(){
-        em.getTransaction().commit();
-    }
-    protected void rollback(){
-        em.getTransaction().rollback();
-    }
+    protected void begin(){em.getTransaction().begin();}
+    protected void commit(){em.getTransaction().commit();}
+    protected void rollback(){em.getTransaction().rollback();}
 }

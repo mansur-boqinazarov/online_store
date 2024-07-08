@@ -1,9 +1,6 @@
 package uz.pdp.online_store.entity.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
@@ -16,7 +13,7 @@ import uz.pdp.online_store.enums.Status;
 @SuperBuilder(toBuilder = true)
 @Getter
 @Setter
-public class User extends Auditable {
+public class Users extends Auditable {
     @Column(nullable = false)
     private String fullName;
     @Column(unique = true, nullable = false)
@@ -26,7 +23,7 @@ public class User extends Auditable {
     @Column(nullable = false)
     private String phoneNumber;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 }

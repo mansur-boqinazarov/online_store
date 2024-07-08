@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
-import uz.pdp.online_store.entity.user.User;
+import uz.pdp.online_store.entity.user.Users;
 
 @Entity
 @AllArgsConstructor
@@ -20,9 +20,8 @@ import uz.pdp.online_store.entity.user.User;
 @SuperBuilder(toBuilder = true)
 public class Shop extends Auditable {
     @OneToOne(cascade = CascadeType.PERSIST)
-    private User user;
+    private Users user;
     @Column(unique = true, nullable = false)
     private String shopName;
-    @Column(columnDefinition = "default 0")
-    private Integer shopTotalBalance;
+    private Integer shopTotalBalance = 0;
 }

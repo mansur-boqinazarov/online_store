@@ -25,7 +25,7 @@ public class Product extends Auditable {
     @Column(nullable = false)
     private Integer productQuantity;
     @Enumerated(EnumType.STRING)
-    private Measurement measurement;
+    private Measurement measurement = Measurement.PIECE;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Picture picture;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

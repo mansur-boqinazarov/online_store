@@ -19,8 +19,10 @@ import uz.pdp.online_store.enums.OrderStatus;
 public class OrderItem extends Auditable {
     @OneToOne(cascade = CascadeType.ALL)
     private Product product;
-    @Column(columnDefinition = "default 1")
-    private int quantity;
+    private int quantity = 1;
     @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
+    @Column(nullable = false)
+    private OrderStatus orderStatus = OrderStatus.NOT_ORDERED;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Orders order;
 }
