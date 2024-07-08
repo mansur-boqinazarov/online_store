@@ -1,6 +1,7 @@
 package uz.pdp.online_store;
 
 import java.io.*;
+import java.util.Random;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -23,6 +24,7 @@ public class HelloServlet extends HttpServlet {
         out.println("</body></html>");
         /*for commit*/
         /*sss*/
+        Random random = new Random();
     }
 
     public void destroy() {
