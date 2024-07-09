@@ -32,7 +32,7 @@
         </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link login-link" href="login"><i class="bi bi-person"></i></a>
+                <a class="nav-link login-link" href="loginSignUp"><i class="bi bi-person"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link cart-link" href="#"><i class="bi bi-bag"></i> Savat</a>
