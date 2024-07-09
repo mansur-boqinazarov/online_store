@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         Users user = userService.login(email, password);
         PrintWriter writer = resp.getWriter();
-
         if (Objects.nonNull(user)) {
             writer.println("""
                     <!DOCTYPE html>

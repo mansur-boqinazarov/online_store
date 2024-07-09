@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.el</artifactId>
-            <version>4.0.0</version>
+            <version>4.0.2</version>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.3</version>
+            <version>42.7.2</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
