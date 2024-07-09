@@ -3,7 +3,7 @@ package uz.pdp.online_store.service.shop;
 import uz.pdp.online_store.dao.shop.ShopDAO;
 import uz.pdp.online_store.entity.shop.Shop;
 import uz.pdp.online_store.entity.user.Users;
-import uz.pdp.online_store.service.userservice.UserService;
+import uz.pdp.online_store.service.user.UserService;
 
 import java.util.List;
 

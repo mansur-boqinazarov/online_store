@@ -3,7 +3,7 @@ package uz.pdp.online_store.testcontroller;
 
 import uz.pdp.online_store.entity.user.Users;
 
-import uz.pdp.online_store.service.userservice.UserService;
+import uz.pdp.online_store.service.user.UserService;
 
 public class UserLoginSignUpController {
     public static void main(String[] args) {

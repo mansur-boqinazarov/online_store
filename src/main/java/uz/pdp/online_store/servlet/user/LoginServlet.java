@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uz.pdp.online_store.entity.user.Users;
-import uz.pdp.online_store.service.userservice.UserService;
+import uz.pdp.online_store.service.user.UserService;
 
 import java.io.IOException;
 import java.io.PrintWriter;

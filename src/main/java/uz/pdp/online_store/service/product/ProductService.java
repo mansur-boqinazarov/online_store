@@ -40,4 +40,7 @@ public class ProductService {
                 .filter(product -> product.getCategory().getId().equals(categoryID))
                 .toList();
     }
+    public Product getProduct(String productID) {
+        return dao.findById(productID);
+    }
 }

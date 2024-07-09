@@ -1,11 +1,13 @@
-package uz.pdp.online_store.service.userservice;
+package uz.pdp.online_store.service.user;
 
 import jakarta.persistence.NoResultException;
 import uz.pdp.online_store.dao.user.AddressDAO;
 import uz.pdp.online_store.dao.user.UserDAO;
 import uz.pdp.online_store.entity.user.Address;
 import uz.pdp.online_store.entity.user.Users;
-import uz.pdp.online_store.service.BaseService;
+import uz.pdp.online_store.enums.Role;
+import uz.pdp.online_store.enums.Status;
+import uz.pdp.online_store.service.base.BaseService;
 
 public class UserService implements BaseService{
     private static final UserDAO userDAO = new UserDAO();
@@ -21,6 +23,8 @@ public class UserService implements BaseService{
                 .fullName(fullName)
                 .email(email)
                 .password(password)
+                .role(Role.USER)
+                .status(Status.ACTIVE)
                 .phoneNumber(phoneNumber)
                 .build();
         return userDAO.save(user);

@@ -21,8 +21,8 @@ public class OrderItem extends Auditable {
     private Product product;
     private int quantity = 1;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private OrderStatus orderStatus = OrderStatus.NOT_ORDERED;
+    @Column(columnDefinition = "varchar(255) default 'NOT_ORDERED'")
+    private OrderStatus orderStatus;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Orders order;
 }
