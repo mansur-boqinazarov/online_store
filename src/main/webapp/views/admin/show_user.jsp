@@ -151,14 +151,14 @@
 
 <div class="todo-container">
     <div class="button-container">
-        <a href="archiveTodo">
-            <button class="animated-button">USER LIST</button>
-        </a>
+        <button class="animated-button">USER LIST</button>
+
     </div>
     <%
         UserService userService = new UserService();
+
         List<Users> list = userService.getAllUsers();
-        for (Users users : list)   {
+        for (Users users : list) {
     %>
     <div class="todo-item">
         <button class="todo-button">
@@ -174,7 +174,12 @@
             </i></p>
             <p><strong>Create At:</strong> <i><%= users.getCreatedAt() %>
             </i></p>
-            <button type="button" class="delete-button">TERMINATION</button>
+<%--            <button type="button" class="delete-button" onclick="<%=userService.inActiveUsers(users.getId())%>"--%>
+
+            <%--            <form method="post" action="/admin/users">--%>
+            <%--                <input type="hidden" name="<%users.getId();%>">--%>
+            <%--            <button type="button" class="delete-button"><%users.getStatus();%></button>--%>
+            <%--            </form>--%>
         </div>
     </div>
     <%
