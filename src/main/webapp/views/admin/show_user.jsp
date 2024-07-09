@@ -174,7 +174,7 @@
             </i></p>
             <p><strong>Create At:</strong> <i><%= users.getCreatedAt() %>
             </i></p>
-<%--            <button type="button" class="delete-button" onclick="<%=userService.inActiveUsers(users.getId())%>"--%>
+<%--            <button type="button" class="delete-button" onclick="<%=userService.userInActive(users.getId())%>"--%>
 
             <%--            <form method="post" action="/admin/users">--%>
             <%--                <input type="hidden" name="<%users.getId();%>">--%>

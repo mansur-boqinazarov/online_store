@@ -1,77 +1,53 @@
-body {
-    font-family: 'Arial', sans-serif;
-}
-.navbar {
-    background-color: #343a40;
-}
-.navbar-brand {
-    color: #fff;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-.navbar-brand img {
-    margin-right: 10px;
-}
-.navbar-toggler {
-    border: none;
-}
-.navbar-toggler-icon {
-    color: #fff;
-}
-.form-inline .form-control {
-    width: 300px;
-    transition: width 0.4s ease-in-out;
-}
-.form-inline .form-control:focus {
-    width: 350px;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-}
-.katalog-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.katalog-btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-.navbar-nav .nav-link {
-    color: #fff;
-    transition: color 0.3s ease;
-}
-.navbar-nav .nav-link:hover {
-    color: #007bff;
-}
-.login-link, .cart-link {
+
+.slideshow-container {
     position: relative;
-    transition: transform 0.3s ease, color 0.3s ease;
+    max-width: 1000px;
+    margin: 20px auto; /* Reduced margin to bring the slideshow closer */
+    overflow: hidden;
 }
-.login-link::after, .cart-link::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background-color: #007bff;
-    transition: width 0.3s ease, left 0.3s ease;
+
+.mySlides {
+    display: none;
+    width: 100%; /* Full width of container */
+    height: auto; /* Make height automatic to adjust to width */
+    transition: transform 0.5s ease-in-out; /* Added transition for smooth effect */
 }
-.login-link:hover::after, .cart-link:hover::after {
+
+.mySlides img {
     width: 100%;
+    height: auto;
+    border-radius: 15px; /* Added border-radius for rounded corners */
+}
+
+.active {
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
     left: 0;
+    border-radius: 3px 0 0 3px;
 }
-.login-link:hover, .cart-link:hover {
-    transform: scale(1.1);
-    color: #007bff;
-}
-.btn-outline-success {
-    color: #fff;
-    border-color: #007bff;
-}
-.btn-outline-success:hover {
-    background-color: #007bff;
-    color: #fff;
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
 }
