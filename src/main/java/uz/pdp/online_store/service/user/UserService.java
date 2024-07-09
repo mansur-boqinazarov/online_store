@@ -9,6 +9,8 @@ import uz.pdp.online_store.enums.Role;
 import uz.pdp.online_store.enums.Status;
 import uz.pdp.online_store.service.base.BaseService;
 
+import java.util.List;
+
 public class UserService implements BaseService{
     private static final UserDAO userDAO = new UserDAO();
     private static final AddressDAO addressDAO = new AddressDAO();
@@ -54,5 +56,9 @@ public class UserService implements BaseService{
         catch (NoResultException e){
             return null;
         }
+    }
+    public List<Users> getAllUsers(){
+        List<Users> all = userDAO.findAll();
+        return all.stream().filter(users -> users.getRole().equals(Role.USER)).toList();
     }
 }
