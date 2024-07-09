@@ -58,6 +58,12 @@ public class UserService implements BaseService{
         }
     }
 
+    public void userInActive(String user_id){
+        Users user = getUserById(user_id);
+        user.setStatus(Status.IN_ACTIVE);
+        userDAO.update(user);
+    }
+
     public List<Users> getAllUsers(){
         List<Users> all = userDAO.findAll();
         return all.stream().filter(users -> users.getRole().equals(Role.USER)).toList();
