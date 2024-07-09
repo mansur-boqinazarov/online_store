@@ -18,7 +18,7 @@ import uz.pdp.online_store.enums.Measurement;
 public class Product extends Auditable {
     @Column(nullable = false)
     private String productName;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String productDescription;
     @Column(nullable = false)
     private Integer productPrice;

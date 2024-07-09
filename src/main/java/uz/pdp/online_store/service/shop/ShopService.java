@@ -19,7 +19,9 @@ public class ShopService {
                         .build()
         );
     }
-
+    public List<Shop> getAllShops(){
+        return dao.findAll();
+    }
     public List<Shop> allMyShops(String user_id){
         return dao.findAll(user_id);
     }

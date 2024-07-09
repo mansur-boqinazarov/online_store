@@ -57,8 +57,14 @@ public class UserService implements BaseService{
             return null;
         }
     }
+
     public List<Users> getAllUsers(){
         List<Users> all = userDAO.findAll();
         return all.stream().filter(users -> users.getRole().equals(Role.USER)).toList();
+    }
+
+    public List<Users> getALlSellers(){
+        List<Users> all = userDAO.findAll();
+        return all.stream().filter(users -> users.getRole().equals(Role.SELLER)).toList();
     }
 }

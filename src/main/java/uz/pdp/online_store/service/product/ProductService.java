@@ -5,6 +5,7 @@ import uz.pdp.online_store.entity.product.Product;
 import uz.pdp.online_store.enums.Measurement;
 import uz.pdp.online_store.service.shop.ShopService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,15 +13,7 @@ public class ProductService {
     ProductDAO dao = new ProductDAO();
 
     public void createProduct(String productName, String productDescription, int productPrice, int productQuantity, Measurement measurement, String pictureID, String categoryID, String shopID) {
-        Product product = Product.builder()
-                .productName(productName)
-                .productDescription(productDescription)
-                .productPrice(productPrice)
-                .productQuantity(productQuantity)
-                .measurement(measurement)
-                .picture(new PictureService().getPicture(pictureID))
-                .category(new CategoryService().getCategory(categoryID))
-                .shop(new ShopService().getShopById(shopID))
+        Product product = Product.builder().productName(productName).productDescription(productDescription).productPrice(productPrice).productQuantity(productQuantity).measurement(measurement).picture(new PictureService().getPicture(pictureID)).category(new CategoryService().getCategory(categoryID)).shop(new ShopService().getShopById(shopID))
                 .build();
     }
 
