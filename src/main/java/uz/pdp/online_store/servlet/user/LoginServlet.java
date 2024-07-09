@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uz.pdp.online_store.entity.user.Users;
+import uz.pdp.online_store.enums.Role;
 import uz.pdp.online_store.service.user.UserService;
 
 import java.io.IOException;
@@ -28,7 +29,10 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         Users user = userService.login(email, password);
         PrintWriter writer = resp.getWriter();
-        if (Objects.nonNull(user)) {
+        if (user.getRole() == Role.ADMIN){
+            req.getRequestDispatcher("/views/admin/admin.jsp").forward(req,resp);
+        }
+        else if (user.getRole() == Role.USER) {
             writer.println("""
                     <!DOCTYPE html>
                     <html lang="en">

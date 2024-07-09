@@ -96,16 +96,16 @@
 <body>
 <section class="main-section">
     <div class="button-container">
-        <a href="/login">
+        <a href="/admin/users">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Foydalanuvchilar</button>
         </a>
-        <a href="/signup">
+        <a href="/admin/seller">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Sotuvchilar</button>
         </a>
-        <a href="/signup">
+        <a href="/admin/stores">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Do'konlar</button>
         </a>
-        <a href="/signup">
+        <a href="/admin/products">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
         </a>
     </div>
