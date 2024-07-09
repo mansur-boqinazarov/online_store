@@ -1,13 +1,15 @@
 package uz.pdp.online_store.service.userservice;
 
+import jakarta.persistence.NoResultException;
+import uz.pdp.online_store.dao.user.AddressDAO;
 import uz.pdp.online_store.dao.user.UserDAO;
+import uz.pdp.online_store.entity.user.Address;
 import uz.pdp.online_store.entity.user.Users;
-import uz.pdp.online_store.enums.Role;
-import uz.pdp.online_store.enums.Status;
 import uz.pdp.online_store.service.BaseService;
 
 public class UserService implements BaseService{
     private static final UserDAO userDAO = new UserDAO();
+    private static final AddressDAO addressDAO = new AddressDAO();
 
     public Users login(String email, String password){
         return userDAO.login(email, password);
@@ -20,11 +22,33 @@ public class UserService implements BaseService{
                 .email(email)
                 .password(password)
                 .phoneNumber(phoneNumber)
-                .role(Role.USER)
-                .status(Status.ACTIVE)
                 .build();
         return userDAO.save(user);
     }
+    public void saveAddress(String city, String street, String apartmentNumber, String user_id){
+        addressDAO.save(
+                Address.builder()
+                        .city(city)
+                        .street(street)
+                        .apartment(apartmentNumber)
+                        .user(getUserById(user_id))
+                        .build());
+    }
 
+    public Address getAddress(String user_id){
+        try {
+            return addressDAO.findById(user_id);
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
+    public Users getUserById(String user_id){
+        try{
+            return userDAO.findById(user_id);
+        }
+        catch (NoResultException e){
+            return null;
+        }
+    }
 }

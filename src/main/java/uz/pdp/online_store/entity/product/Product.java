@@ -22,7 +22,7 @@ public class Product extends Auditable {
     private String productDescription;
     @Column(nullable = false)
     private Integer productPrice;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "integer default 1")
     private Integer productQuantity;
     @Enumerated(EnumType.STRING)
     private Measurement measurement = Measurement.PIECE;

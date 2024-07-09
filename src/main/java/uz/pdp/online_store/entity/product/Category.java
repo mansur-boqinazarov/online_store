@@ -13,6 +13,6 @@ import uz.pdp.online_store.entity.auditable.Auditable;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Category extends Auditable {
-    @Column(nullable = false, unique = false)
+    @Column(nullable = false, unique = true)
     private String categoryName;
 }

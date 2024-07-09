@@ -9,6 +9,7 @@ public class Payment extends Auditable {
     @OneToOne(cascade = CascadeType.ALL)
     private Orders order;
     @Enumerated(EnumType.STRING)
-    private PaymentType paymentType = PaymentType.CASH;
+    @Column(columnDefinition = "varchar(255) default 'CASH'")
+    private PaymentType paymentType;
     private Integer totalPayment;
 }

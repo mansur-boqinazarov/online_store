@@ -22,8 +22,10 @@ public class Users extends Auditable {
     private String password;
     @Column(nullable = false)
     private String phoneNumber;
+    @Column(columnDefinition = "varchar(255) default 'USER'")
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Role role;
+    @Column(columnDefinition = "varchar(255) default 'ACTIVE'")
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 }
