@@ -1,0 +1,40 @@
+package uz.pdp.online_store.testcontroller;
+
+import uz.pdp.online_store.entity.product.Category;
+import uz.pdp.online_store.service.product.CategoryService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CreateCategoryController {
+    private static final CategoryService service = new CategoryService();
+    public static void main(String[] args) {
+        List<Category> allCategories = service.getAllCategories();
+        List<String> names = new ArrayList<String>();
+        for (Category category : allCategories) {
+            System.out.println((category.getCategoryName()));
+        }
+        /*
+        * Mevalar
+Sabzavotlar
+Elektron jihozlar
+Telefonlar
+Xo'jalik mahsulotlar
+Erkaklar kiyimi
+Ayollar kiyimi
+Bolalar kiyimi
+Oziq-ovqat mahsulotlari
+Salqin ichimliklar
+Mebellar
+Telefon aksessuarlari
+Avtomobil aksessuarlari
+Komputerlar
+Smart watch
+Quloqchinlar*/
+    }
+    private static void createCategory(List<String> categoryName) {
+        for (String s : categoryName) {
+            service.createCategory(s);
+        }
+    }
+}
