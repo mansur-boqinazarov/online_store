@@ -1,9 +1,6 @@
 package uz.pdp.online_store.entity.shop;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +17,7 @@ import uz.pdp.online_store.entity.user.Users;
 @SuperBuilder(toBuilder = true)
 public class Shop extends Auditable {
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private Users user;
     @Column(unique = true, nullable = false)
     private String shopName;
