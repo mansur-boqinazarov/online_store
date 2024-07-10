@@ -28,8 +28,8 @@ public class Product extends Auditable {
     private Measurement measurement = Measurement.PIECE;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Picture picture;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Category category;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Shop shop;
 }

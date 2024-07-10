@@ -10,7 +10,7 @@ public class CategoryService {
     private static final CategoryDAO dao = new CategoryDAO();
 
     public void createCategory(String categoryName) {
-        dao.save(new Category(categoryName));
+        dao.save(Category.builder().categoryName(categoryName).build());
     }
 
     public Category getCategory(String categoryID) {

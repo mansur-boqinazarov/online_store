@@ -8,12 +8,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import uz.pdp.online_store.entity.product.Picture;
-import uz.pdp.online_store.entity.product.Product;
 import uz.pdp.online_store.enums.Measurement;
-import uz.pdp.online_store.service.product.CategoryService;
 import uz.pdp.online_store.service.product.PictureService;
 import uz.pdp.online_store.service.product.ProductService;
-import uz.pdp.online_store.service.shop.ShopService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,5 +58,6 @@ public class AddProductServlet extends HttpServlet {
         String pictureID = pictureService.addPicture(imageBytes, pictureType);
 
         service.createProduct(productName, productDescription, productPrice, productQuantity, measurement, pictureID, categoryId, shopId);
+            resp.sendRedirect("/seller");
     }
 }

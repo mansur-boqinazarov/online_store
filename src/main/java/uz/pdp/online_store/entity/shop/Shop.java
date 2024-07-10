@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
+import uz.pdp.online_store.entity.product.Product;
 import uz.pdp.online_store.entity.user.Users;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -25,4 +28,6 @@ public class Shop extends Auditable {
     private Integer shopTotalBalance = 0;
     @Column(unique = true, nullable = false)
     private String shopDescription;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shop")
+    private List<Product> products;
 }

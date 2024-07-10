@@ -1,9 +1,7 @@
 package uz.pdp.online_store.testcontroller;
 
-import uz.pdp.online_store.entity.product.Category;
 import uz.pdp.online_store.service.product.CategoryService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreateCategoryController {
