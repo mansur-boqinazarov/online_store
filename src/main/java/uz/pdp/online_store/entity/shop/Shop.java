@@ -25,4 +25,6 @@ public class Shop extends Auditable {
     private String shopName;
     @Column(columnDefinition = "integer default 0")
     private Integer shopTotalBalance = 0;
+    @Column(unique = true, nullable = false)
+    private String shopDescription;
 }

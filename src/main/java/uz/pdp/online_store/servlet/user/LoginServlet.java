@@ -32,6 +32,9 @@ public class LoginServlet extends HttpServlet {
         if (user.getRole() == Role.ADMIN){
             req.getRequestDispatcher("/views/admin/admin.jsp").forward(req,resp);
         }
+        else if(user.getRole() == Role.SELLER){
+            req.getRequestDispatcher("/views/seller/seller.jsp").forward(req,resp);
+        }
         else if (user.getRole() == Role.USER) {
             writer.println("""
                     <!DOCTYPE html>

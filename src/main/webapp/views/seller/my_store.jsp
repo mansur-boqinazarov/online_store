@@ -1,13 +1,10 @@
-<%@ page import="uz.pdp.online_store.entity.user.Users" %>
-<%@ page import="uz.pdp.online_store.service.user.UserService" %>
+<%@ page import="uz.pdp.online_store.entity.product.Product" %>
+<%@ page import="uz.pdp.online_store.service.product.ProductService" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Objects" %>
-<%@ page import="uz.pdp.online_store.service.shop.ShopService" %>
-<%@ page import="uz.pdp.online_store.entity.shop.Shop" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Todo List</title>
+    <title>My Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -153,35 +150,31 @@
 
 <div class="todo-container">
     <div class="button-container">
-        <button class="animated-button">USER LIST</button>
-
+        <button class="animated-button">MY PRODUCTS</button>
     </div>
     <%
-        ShopService shopService = new ShopService();
+        ProductService productService = new ProductService();
+        List<Product> productList = productService.getAllProducts();
 
-        List<Shop> list = shopService.getAllShops();
-        for (Shop users : list) {
+        for (Product product : productList) {
     %>
     <div class="todo-item">
         <button class="todo-button">
-            <span><%= users.getShopName() %></span>
+            <span><%= product.getProductName() %></span>
             <i class="fas fa-angle-down todo-icon"></i>
         </button>
         <div class="todo-details">
-            <p><strong>Total Balance:</strong> <i><%= users.getShopTotalBalance() %>
-            </i></p>
-            <p><strong>Create At:</strong> <i><%= users.getCreatedAt() %>
-            </i></p>
-            <p><strong>Owner Name:</strong> <i><%= users.getUser().getEmail() %>
-            </i></p>
-            <p><strong>Email:</strong> <i><%= users.getUser().getEmail() %>
-            </i></p>
-            <%--            <button type="button" class="delete-button" onclick="<%=userService.userInActive(users.getId())%>"--%>
-
-            <%--            <form method="post" action="/admin/users">--%>
-            <%--                <input type="hidden" name="<%users.getId();%>">--%>
-            <%--            <button type="button" class="delete-button"><%users.getStatus();%></button>--%>
-            <%--            </form>--%>
+            <p><strong>Description:</strong> <i><%= product.getProductDescription() %></i></p>
+            <p><strong>Price:</strong> <i>$ <%= product.getProductPrice() %></i></p>
+            <p><strong>Quantity:</strong> <i><%= product.getProductQuantity() %></i></p>
+            <p><strong>Category:</strong> <i><%= product.getCategory().getCategoryName() %></i></p>
+            <%
+                if (product.getPicture() != null) {
+            %>
+            <p><strong>Picture:</strong> <img src="data:image/jpeg;base64,<%= String.valueOf(product.getPicture()) %>" alt="Product Picture" style="max-width: 200px;"></p>
+            <%
+                }
+            %>
         </div>
     </div>
     <%

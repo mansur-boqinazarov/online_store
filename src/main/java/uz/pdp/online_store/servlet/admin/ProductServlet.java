@@ -6,5 +6,4 @@ import jakarta.servlet.http.HttpServlet;
 @WebServlet(name = "Products",value = "/admin/products")
 public class ProductServlet extends HttpServlet {
 
-
 }
