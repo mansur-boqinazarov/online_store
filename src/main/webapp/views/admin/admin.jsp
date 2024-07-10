@@ -78,11 +78,11 @@
     </style>
 </head>
 <body>
+<header class="header animate__animated animate__fadeInDown">
+    <h1 class="animate__animated animate__pulse animate__infinite">ADMIN MENU</h1>
+</header>
 <section class="main-section">
     <div class="button-container">
-        <div class="header">
-            <h1>ADMIN MENU</h1>
-        </div>
         <a href="/admin/users">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Foydalanuvchilar</button>
         </a>
@@ -91,11 +91,14 @@
         </a>
         <a href="/admin/stores">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Do'konlar</button>
-        </a>
-        <a href="/admin/products">
-            <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
-        </a>
     </div>
+    </a>
+    <a href="/admin/products">
+        <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
+    </a>
+    <a href="/admin/createCategory">
+        <button type="button" class="animated-button animate__animated animate__fadeInUp">Category yaearatish</button>
+    </a>
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
