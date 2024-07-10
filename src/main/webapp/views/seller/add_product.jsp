@@ -4,14 +4,6 @@
 <%@ page import="uz.pdp.online_store.service.shop.ShopService" %>
 <%@ page import="uz.pdp.online_store.entity.shop.Shop" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,34 +105,34 @@
         <div class="header">
             <h1>MAHSULOT QO'SHISH</h1>
         </div>
-        <form method="post" action="/seller/addProduct" enctype="multipart/form-data">
+        <form method="post" action="/seller/addproduct" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="productName" class="form-label">Mahsulot nomi</label>
-                <input type="text" id="productName" name="productName" class="form-input" required>
+                <input type="text" id="productName" name="productName" class="form-input">
             </div>
             <div class="form-group">
                 <label for="productDescription" class="form-label">Mahsulot tavsifi</label>
-                <textarea id="productDescription" name="productDescription" rows="4" class="form-input" required></textarea>
+                <textarea id="productDescription" name="productDescription" rows="4" class="form-input"></textarea>
             </div>
             <div class="form-group">
                 <label for="productPrice" class="form-label">Mahsulot narxi</label>
-                <input type="number" id="productPrice" name="productPrice" class="form-input" required>
+                <input type="number" id="productPrice" name="productPrice" class="form-input">
             </div>
             <div class="form-group">
                 <label for="productQuantity" class="form-label">Mahsulot miqdori</label>
-                <input type="number" id="productQuantity" name="productQuantity" class="form-input" required>
+                <input type="number" id="productQuantity" name="productQuantity" class="form-input">
             </div>
             <div class="form-group">
                 <label for="measurement" class="form-label">Mahsulot o'lchovi</label>
-                <select id="measurement" name="measurement" class="select-input" required>
-                    <option value="Kilogram">Kilogram</option>
-                    <option value="Piece">Piece</option>
-                    <option value="Liter">Liter</option>
+                <select id="measurement" name="measurement" class="select-input">
+                    <option value="KILOGRAM">Kilogram</option>
+                    <option value="PIECE">Piece</option>
+                    <option value="LITER">Liter</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="categoryId" class="form-label">Mahsulot kategoriyasi</label>
-                <select id="categoryId" name="categoryId" class="select-input" required>
+                <select id="categoryId" name="categoryId" class="select-input">
                     <%
                         CategoryService categoryService = new CategoryService();
                         List<Category> categories = categoryService.getAllCategories();
@@ -152,9 +144,10 @@
                     %>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="shopId" class="form-label">Mahsulotni qo'shish do'koni</label>
-                <select id="shopId" name="shopId" class="select-input" required>
+                <select id="shopId" name="shopId" class="select-input">
                     <%
                         ShopService shopService = new ShopService();
                         List<Shop> shops = shopService.getAllShops();
@@ -166,10 +159,12 @@
                     %>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="productImage" class="form-label">Mahsulot rasmi</label>
                 <input type="file" id="productImage" name="productImage" class="form-input" required>
             </div>
+
             <button type="submit" class="submit-button animate__animated animate__fadeInUp">Saqlash</button>
         </form>
     </div>

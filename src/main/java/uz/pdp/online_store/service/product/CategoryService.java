@@ -23,4 +23,16 @@ public class CategoryService {
     public List<Category> getAllCategories() {
         return dao.findAll();
     }
+    public String getCategoryID(String currentCategoryName){
+        List<Category> list = getAllCategories();
+        for (Category category : list) {
+            if(category.getCategoryName().equals(currentCategoryName)){
+                return category.getId();
+            }
+        }
+        return null;
+    }
+    public Category getCategoryByID(String categoryID) {
+        return dao.findById(categoryID);
+    }
 }
