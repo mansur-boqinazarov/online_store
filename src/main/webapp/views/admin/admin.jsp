@@ -74,28 +74,15 @@
             box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4;
         }
 
-        .help-section {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .help-section a {
-            color: #8be3e3;
-            font-size: 1.2em;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .help-section a:hover {
-            color: #2e538f;
-            transform: scale(1.1);
-        }
 
     </style>
 </head>
 <body>
 <section class="main-section">
     <div class="button-container">
+        <div class="header">
+            <h1>ADMIN MENU</h1>
+        </div>
         <a href="/admin/users">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Foydalanuvchilar</button>
         </a>
