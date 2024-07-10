@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
+import uz.pdp.online_store.entity.shop.Shop;
 import uz.pdp.online_store.enums.Role;
 import uz.pdp.online_store.enums.Status;
+
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor

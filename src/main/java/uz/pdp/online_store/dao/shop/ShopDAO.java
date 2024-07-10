@@ -13,5 +13,4 @@ public class ShopDAO extends BaseDAO<Shop,String> {
                 .filter(shop -> shop.getUser().getId().equals(user_id))
                 .toList();
     }
-
 }

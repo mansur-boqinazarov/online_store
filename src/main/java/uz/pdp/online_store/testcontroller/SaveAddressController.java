@@ -17,13 +17,4 @@ public class SaveAddressController {
         System.out.println("byId.getApartment() = " + byId.getApartment());
     }
 
-    private static void createAddressTest() {
-        AddressDAO addressDAO = new AddressDAO();
-        addressDAO.save(Address.builder()
-                        .city("To'rtko'l")
-                        .street("Zamondosh")
-                        .apartment("60")
-                        .user(new Users("To'lqin", "example@mail.ru", "1234", "+99", Role.ADMIN, Status.ACTIVE))
-                .build());
-    }
 }
