@@ -7,10 +7,8 @@ import java.util.List;
 
 
 public class ShopDAO extends BaseDAO<Shop,String> {
-    ShopDAO dao = new ShopDAO();
-
     public List<Shop> findAll(String user_id) {
-        List<Shop> shops = dao.findAll();
+        List<Shop> shops = findAll();
         return shops.stream()
                 .filter(shop -> shop.getUser().getId().equals(user_id))
                 .toList();

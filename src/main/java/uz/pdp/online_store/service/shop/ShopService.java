@@ -10,11 +10,12 @@ import java.util.List;
 public class ShopService {
     private static final ShopDAO dao = new ShopDAO();
 
-    public void createShop(String user_id, String shopName){
+    public void createShop(String user_id, String shopName, String description){
         Users user = new UserService().getUserById(user_id);
         dao.save(
                 Shop.builder()
                         .shopName(shopName)
+                        .shopDescription(description)
                         .user(user)
                         .build()
         );

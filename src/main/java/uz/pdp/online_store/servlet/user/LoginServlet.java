@@ -3,9 +3,7 @@ package uz.pdp.online_store.servlet.user;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import uz.pdp.online_store.entity.user.Users;
 import uz.pdp.online_store.enums.Role;
 import uz.pdp.online_store.service.user.UserService;
@@ -29,6 +27,12 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         Users user = userService.login(email, password);
         PrintWriter writer = resp.getWriter();
+
+        HttpSession session = req.getSession();
+        session.setAttribute("user_id", user.getId());
+        String id = session.getId();
+        Cookie cookie = new Cookie("id", id);
+
         if (user.getRole() == Role.ADMIN){
             req.getRequestDispatcher("/views/admin/admin.jsp").forward(req,resp);
         }

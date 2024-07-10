@@ -73,7 +73,7 @@
 <div class="form-container">
     <h1 style="text-align: center; margin-bottom: 20px;">Create Category</h1>
 
-    <form method="post" action="/admin/create-category">
+    <form method="post" action="/admin/createCategory">
         <div class="form-group">
             <label class="form-label" for="categoryName">Category Name:</label>
             <input type="text" id="categoryName" name="categoryName" class="form-input" required>
