@@ -10,9 +10,18 @@
     <style>
         /* CSS for animation */
         @keyframes textChange {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -71,7 +80,7 @@
                     <span>Phone Number</span>
                     <input type="text" name="number"/>
                 </label>
-                <button type="submit" class="submit" id="signupButton">Sign Up</button>
+                <button type="submit" class="submit">Sign Up</button>
             </form>
         </div>
     </div>
@@ -82,20 +91,18 @@
         document.querySelector('.cont').classList.toggle('s--signup');
     });
 
-    document.getElementById('signupButton').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the form from submitting
+    document.getElementById('signupButton').addEventListener('click', function (event) {
+        event.preventDefault();
 
-        // Change button text to "Successfully"
         this.innerText = 'Successfully';
 
-        // Add animation class
+
         this.classList.add('success-animation');
 
-        // Reset text after animation completes
         setTimeout(() => {
             this.innerText = 'Sign Up';
             this.classList.remove('success-animation');
-        }, 2000); // Adjust timing as needed
+        }, 2000);
     });
 </script>
 </body>
