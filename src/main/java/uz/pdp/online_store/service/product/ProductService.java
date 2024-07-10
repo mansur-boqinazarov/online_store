@@ -11,6 +11,11 @@ import java.util.List;
 public class ProductService {
     ProductDAO dao = new ProductDAO();
 
+    //delete product by id method
+    public void deleteProduct(String productId) {
+        dao.deleteById(productId);
+    }
+
     public void createProduct(String productName, String productDescription, int productPrice, int productQuantity, Measurement measurement, String pictureID, String categoryID, String shopID) {
         Product product = Product.builder().productName(productName).productDescription(productDescription).productPrice(productPrice).productQuantity(productQuantity).measurement(measurement).picture(new PictureService().getPicture(pictureID)).category(new CategoryService().getCategory(categoryID)).shop(new ShopService().getShopById(shopID))
                 .build();

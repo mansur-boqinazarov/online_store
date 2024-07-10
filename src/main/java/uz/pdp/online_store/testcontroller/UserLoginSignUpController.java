@@ -5,9 +5,9 @@ import uz.pdp.online_store.service.user.UserService;
 
 public class UserLoginSignUpController {
     public static void main(String[] args) {
-        String fullname = "Tolik";
-        String email = "tolik.otkirovich@mail.ru";
-        String password = "12345";
+        String fullname = "admin";
+        String email = "admin@gmail.com";
+        String password = "1";
         String phoneNumber = "123456789";
         signup(fullname, email, password, phoneNumber);
     }
