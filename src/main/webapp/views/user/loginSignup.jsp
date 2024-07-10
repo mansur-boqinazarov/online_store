@@ -6,36 +6,97 @@
     <title>Sign Up and Login Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/resources/css/loginSignup.css">
+    <style>
+        /* CSS for animation */
+        @keyframes textChange {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="message signup">
-        <div class="btn-wrapper">
-            <button class="button" id="signup">Sign Up</button>
-            <button class="button" id="login"> Login</button>
+<br>
+<br>
+<br>
+
+<div class="cont">
+    <div class="form sign-in">
+        <h2>Welcome</h2>
+        <form method="post" action="login">
+            <label>
+                <span>Email</span>
+                <input type="email" name="email"/>
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password"/>
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <button type="submit" class="submit">Sign In</button>
+        </form>
+
+    </div>
+
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h3>Don't have an account? Please Sign up!</h3>
+            </div>
+            <div class="img__text m--in">
+                <h3>If you already have an account, just sign in.</h3>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">Sign Up</span>
+                <span class="m--in">Sign In</span>
+            </div>
+        </div>
+        <div class="form sign-up">
+            <h2>Create your Account</h2>
+            <form method="post" action="signup">
+                <label>
+                    <span>Name</span>
+                    <input type="text" name="fullName"/>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email"/>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password"/>
+                </label>
+                <label>
+                    <span>Phone Number</span>
+                    <input type="text" name="number"/>
+                </label>
+                <button type="submit" class="submit" id="signupButton">Sign Up</button>
+            </form>
         </div>
     </div>
-    <div class="form form--signup">
-        <div class="form--heading">Welcome! Sign Up</div>
-        <form  action="signup" method="post">
-            <input type="text" name="fullName" placeholder="Full Name">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="text" name="number" placeholder="Phone Number">
-            <button class="button">Sign Up</button>
-        </form>
-    </div>
-    <div class="form form--login">
-        <div class="form--heading">Welcome Log In! </div>
-        <form action="login" method="post">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <button class="button">Login</button>
-        </form>
-    </div>
 </div>
-<script src="/resources/js/loginSignup.js"></script>
+
+<script>
+    document.querySelector('.img__btn').addEventListener('click', function () {
+        document.querySelector('.cont').classList.toggle('s--signup');
+    });
+
+    document.getElementById('signupButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Change button text to "Successfully"
+        this.innerText = 'Successfully';
+
+        // Add animation class
+        this.classList.add('success-animation');
+
+        // Reset text after animation completes
+        setTimeout(() => {
+            this.innerText = 'Sign Up';
+            this.classList.remove('success-animation');
+        }, 2000); // Adjust timing as needed
+    });
+</script>
 </body>
 </html>
