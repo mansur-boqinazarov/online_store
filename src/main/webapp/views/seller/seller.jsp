@@ -71,11 +71,11 @@
     </style>
 </head>
 <body>
+<header class="header">
+    <h1>SELLER MENU</h1>
+</header>
 <section class="main-section">
     <div class="button-container">
-        <div class="header">
-            <h1>SELLER MENU</h1>
-        </div>
         <a href="/seller/createstore">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">DO'KON YARATISH</button>
         </a>
