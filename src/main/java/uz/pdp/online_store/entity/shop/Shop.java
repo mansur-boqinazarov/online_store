@@ -19,7 +19,7 @@ import uz.pdp.online_store.entity.user.Users;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Shop extends Auditable {
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     private Users user;
     @Column(unique = true, nullable = false)
     private String shopName;
