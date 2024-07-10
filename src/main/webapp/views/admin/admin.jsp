@@ -91,14 +91,14 @@
         </a>
         <a href="/admin/stores">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Do'konlar</button>
+    </a>
+        <a href="/admin/products">
+            <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
+        </a>
+        <a href="/admin/createCategory">
+            <button type="button" class="animated-button animate__animated animate__fadeInUp">Category yaearatish</button>
+        </a>
     </div>
-    </a>
-    <a href="/admin/products">
-        <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
-    </a>
-    <a href="/admin/createCategory">
-        <button type="button" class="animated-button animate__animated animate__fadeInUp">Category yaearatish</button>
-    </a>
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {

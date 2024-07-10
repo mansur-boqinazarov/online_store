@@ -1,3 +1,6 @@
+<%@ page import="uz.pdp.online_store.service.product.CategoryService" %>
+<%@ page import="uz.pdp.online_store.entity.product.Category" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +65,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <form class="form-inline my-2 my-lg-0 ml-auto">
+            <div class="dropdown">
+                <button class="btn btn-outline-success dropdown-toggle my-2 my-sm-0 mr-2" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-list"></i> Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    <%
+                        CategoryService categoryService = new CategoryService();
+                        List<Category> categories = categoryService.getAllCategories();
+                        for (Category category : categories) {
+                    %>
+                    <a class="dropdown-item" href="#"><%= category.getCategoryName() %></a>
+                    <%
+                        }
+                    %>
+                </div>
+            </div>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
         </form>
