@@ -194,13 +194,10 @@
         <img src="rekPicture/1_resized.png" alt="Image 1">
     </div>
     <div class="mySlides">
-        <img src="rekPicture/1_resized.png" alt="Image 2">
+        <img src="rekPicture/2_resized.png" alt="Image 2">
     </div>
     <div class="mySlides">
-        <img src="rekPicture/1_resized.png" alt="Image 3">
-    </div>
-    <div class="mySlides">
-        <img src="rekPicture/1_resized.png" alt="Image 4">
+        <img src="rekPicture/3_resized.png" alt="Image 3">
     </div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
