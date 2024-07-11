@@ -47,7 +47,7 @@ public class ProductService {
         List<Product> productList = getAllProducts();
         Collections.shuffle(productList);
         return productList.stream()
-                .limit(Math.min((productList.size()), 18))
+                .limit(Math.min((productList.size()), 16))
                 .toList();
     }
 }

@@ -36,8 +36,8 @@
         }
         .product-details p {
             margin: 5px 0;
-            font-size: 14px;
-            color: #666666;
+            font-size: 16px; /* Changed font size */
+            color: #ff0000; /* Changed color to bright red */
         }
         .mySlides {
             display: none;
@@ -59,7 +59,7 @@
             border-radius: 5px;
         }
         .product-title {
-            font-size: 16px;
+            font-size: 18px; /* Changed font size */
             font-weight: bold;
             color: #333333;
             margin: 10px 0;
@@ -100,22 +100,22 @@
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s ease-in-out;
-            height: 480px; /* Increase the height of the container */
+            height: 520px; /* Increased height */
         }
         .product-item:hover {
             transform: scale(1.1);
         }
         .product-item img {
             width: 100%;
-            height: auto; /* Auto height for full image visibility */
-            object-fit: contain; /* Ensure the entire image is visible */
+            height: auto;
+            object-fit: contain;
             border-radius: 8px;
         }
         .add-to-cart {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: auto; /* Push add-to-cart section to the bottom */
+            margin-top: auto;
             width: 100%;
         }
         .quantity-controls {
@@ -232,7 +232,7 @@
             <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
             <div class="product-title"><%= product.getProductName() %></div>
             <div class="product-details">
-                <p><strong>Price:</strong><%= product.getProductPrice() %> so'm</p>
+                <p><strong>Price:</strong> <%= product.getProductPrice() %> so'm</p>
             </div>
             <div class="add-to-cart">
                 <div class="quantity-controls">
