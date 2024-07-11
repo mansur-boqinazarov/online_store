@@ -50,4 +50,13 @@ public class ProductService {
                 .limit(Math.min((productList.size()), 16))
                 .toList();
     }
+
+    public List<Product> randomProduct2(){
+        List<Product> productList = getAllProducts();
+        Collections.shuffle(productList);
+        return productList.stream()
+                .limit(Math.min((productList.size()), 6))
+                .toList();
+    }
+
 }
