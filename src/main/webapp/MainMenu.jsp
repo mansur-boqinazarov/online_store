@@ -1,6 +1,9 @@
 <%@ page import="uz.pdp.online_store.service.product.CategoryService" %>
 <%@ page import="uz.pdp.online_store.entity.product.Category" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uz.pdp.online_store.util.ImageUtil" %>
+<%@ page import="uz.pdp.online_store.entity.product.Product" %>
+<%@ page import="uz.pdp.online_store.service.product.ProductService" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +56,14 @@
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
         }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -96,23 +107,44 @@
 </nav>
 <div class="slideshow-container">
     <div class="mySlides active">
-        <img src="rekPicture/img5.png" alt="Image 1">
+        <img src="rekPicture/1_resized.png" alt="Image 1">
+    </div>
+
+    <div class="mySlides">
+        <img src="rekPicture/1_resized.png" alt="Image 2">
     </div>
     <div class="mySlides">
-        <img src="rekPicture/img2.png" alt="Image 2">
+        <img src="rekPicture/1_resized.png" alt="Image 3">
     </div>
     <div class="mySlides">
-        <img src="rekPicture/img3.png" alt="Image 3">
-    </div>
-    <div class="mySlides">
-        <img src="rekPicture/img4.png" alt="Image 4">
-    </div>
-    <div class="mySlides">
-        <img src="rekPicture/img1.png" alt="Image 5">
+        <img src="rekPicture/1_resized.png" alt="Image 4">
     </div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
+
+<div class="product-container">
+    <%
+        ProductService productService = new ProductService();
+        List<Product> productList = productService.randomProduct();
+       for (Product product : productList) {
+            String base64Image = ImageUtil.getBase64Image(product.getPicture().getPicture());
+    %>
+    <div class="product-item">
+        <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
+        <div class="product-title"><%= product.getProductName() %></div>
+        <div class="product-details">
+            <p><strong>Description:</strong> <%= product.getProductDescription() %></p>
+            <p><strong>Price:</strong> $<%= product.getProductPrice() %></p>
+            <p><strong>Quantity:</strong> <%= product.getProductQuantity() %></p>
+        </div>
+    </div>
+    <%
+        }
+    %>
+</div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

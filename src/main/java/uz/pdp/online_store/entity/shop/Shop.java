@@ -19,9 +19,6 @@ import java.util.List;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Shop extends Auditable {
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private Users user;
     @Column(unique = true, nullable = false)
     private String shopName;
     @Column(columnDefinition = "integer default 0")
@@ -30,4 +27,7 @@ public class Shop extends Auditable {
     private String shopDescription;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shop")
     private List<Product> products;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private Users users;
 }

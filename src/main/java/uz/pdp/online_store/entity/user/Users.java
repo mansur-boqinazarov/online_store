@@ -8,6 +8,7 @@ import uz.pdp.online_store.entity.shop.Shop;
 import uz.pdp.online_store.enums.Role;
 import uz.pdp.online_store.enums.Status;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,4 +32,6 @@ public class Users extends Auditable {
     @Column(columnDefinition = "varchar(255) default 'ACTIVE'")
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "users")
+    private List<Shop> shops;
 }

@@ -10,7 +10,7 @@ public class ShopDAO extends BaseDAO<Shop,String> {
     public List<Shop> findAll(String user_id) {
         List<Shop> shops = findAll();
         return shops.stream()
-                .filter(shop -> shop.getUser().getId().equals(user_id))
+                .filter(shop -> shop.getUsers().getId().equals(user_id))
                 .toList();
     }
 }

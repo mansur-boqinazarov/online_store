@@ -5,6 +5,7 @@ import uz.pdp.online_store.entity.product.Product;
 import uz.pdp.online_store.enums.Measurement;
 import uz.pdp.online_store.service.shop.ShopService;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -40,5 +41,13 @@ public class ProductService {
     }
     public Product getProduct(String productID) {
         return dao.findById(productID);
+    }
+
+    public List<Product> randomProduct(){
+        List<Product> productList = getAllProducts();
+        Collections.shuffle(productList);
+        return productList.stream()
+                .limit(Math.min((productList.size()), 18))
+                .toList();
     }
 }

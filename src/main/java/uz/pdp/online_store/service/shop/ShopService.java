@@ -16,7 +16,7 @@ public class ShopService {
                 Shop.builder()
                         .shopName(shopName)
                         .shopDescription(description)
-                        .user(user)
+                        .users(user)
                         .build()
         );
     }

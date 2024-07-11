@@ -121,21 +121,18 @@
     <%
         ProductService productService = new ProductService();
         List<Product> productList = productService.getAllProducts();
-        String userId = (String)request.getSession().getAttribute("user_id");
-        List<Product> products = productList.stream().filter(product -> product.getShop().getUsers().getId().equals(userId)).toList();
-        for (Product product : products) {
+
+        for (Product product : productList) {
             String base64Image = ImageUtil.getBase64Image(product.getPicture().getPicture());
     %>
     <div class="product-item">
         <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
         <div class="product-title"><%= product.getProductName() %></div>
         <div class="product-details">
+            <p><strong>Description:</strong> <%= product.getProductDescription() %></p>
             <p><strong>Price:</strong> $<%= product.getProductPrice() %></p>
+            <p><strong>Quantity:</strong> <%= product.getProductQuantity() %></p>
         </div>
-        <form method="post" action="/admin/deleteproduct">
-            <input type="hidden" name="productId" value="<%= product.getId() %>">
-            <button type="submit" class="delete-button"><i class="fas fa-trash-alt"></i> Delete Product</button>
-        </form>
     </div>
     <%
         }

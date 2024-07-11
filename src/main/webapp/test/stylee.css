@@ -1,35 +1,144 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.main-header .logo img {
+    height: 60px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-icons a {
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+aside {
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #e1e1e1;
+    padding: 20px;
+}
+
+.catalog ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.container {
+.catalog ul li {
+    margin-bottom: 10px;
+}
+
+.catalog ul li a {
+    text-decoration: none;
+    color: black;
     display: flex;
-    flex-direction: column;
     align-items: center;
+}
+
+.catalog ul li a:hover {
+    color: #ff4081;
+}
+
+.main-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.promotion-banner img {
+    width: 100%;
+    height: auto;
+}
+
+.product-list {
+    margin-top: 20px;
+}
+
+.product-list h2 {
+    color: #ff4081;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.menu-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 32px;
+.product-item {
+    width: calc(33.333% - 20px);
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.menu-button:hover {
-    background-color: #45a049;
+.product-item img {
+    width: 100%;
+    height: auto;
+}
+
+.product-name {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.product-item button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

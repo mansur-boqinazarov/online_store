@@ -172,9 +172,9 @@
             </i></p>
             <p><strong>Create At:</strong> <i><%= users.getCreatedAt() %>
             </i></p>
-            <p><strong>Owner Name:</strong> <i><%= users.getUser().getEmail() %>
+            <p><strong>Owner Name:</strong> <i><%= users.getUsers().getEmail() %>
             </i></p>
-            <p><strong>Email:</strong> <i><%= users.getUser().getEmail() %>
+            <p><strong>Email:</strong> <i><%= users.getUsers().getEmail() %>
             </i></p>
             <%--            <button type="button" class="delete-button" onclick="<%=userService.userInActive(users.getId())%>"--%>
 
