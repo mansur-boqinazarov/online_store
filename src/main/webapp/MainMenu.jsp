@@ -33,11 +33,7 @@
             position: relative;
             max-width: 95%;
             overflow: hidden;
-        }
-        .product-details p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #666666;
+            margin: auto;
         }
         .mySlides {
             display: none;
@@ -57,13 +53,6 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px 15px;
             border-radius: 5px;
-        }
-        .product-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333333;
-            margin: 10px 0;
-            text-align: center;
         }
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
@@ -110,6 +99,13 @@
             height: auto; /* Auto height for full image visibility */
             object-fit: contain; /* Ensure the entire image is visible */
             border-radius: 8px;
+        }
+        .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333333;
+            margin: 10px 0;
+            text-align: center;
         }
         .add-to-cart {
             display: flex;
@@ -226,8 +222,10 @@
                 String base64Image = ImageUtil.getBase64Image(product.getPicture().getPicture());
         %>
         <div class="product-item">
-            <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
-            <div class="product-title"><%= product.getProductName() %></div>
+            <a href="/menu/productDetails?id=<%= product.getId() %>">
+                <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
+                <div class="product-title"><%= product.getProductName() %></div>
+            </a>
             <div class="product-details">
                 <p><strong>Price:</strong><%= product.getProductPrice() %> so'm</p>
             </div>
