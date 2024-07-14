@@ -19,6 +19,6 @@ public class DeleteProductServlet extends HttpServlet {
         String productId = req.getParameter("productId");
         ProductService service = new ProductService();
         service.deleteProduct(productId);
-        resp.sendRedirect("/seller");
+        resp.sendRedirect("/app/seller");
     }
 }

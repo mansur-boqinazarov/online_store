@@ -105,7 +105,7 @@
         <div class="header">
             <h1>MAHSULOT QO'SHISH</h1>
         </div>
-        <form method="post" action="/seller/addproduct" enctype="multipart/form-data">
+        <form method="post" action=${pageContext.request.contextPath}/seller/addproduct enctype="multipart/form-data">
             <div class="form-group">
                 <label for="productName" class="form-label">Mahsulot nomi</label>
                 <input type="text" id="productName" name="productName" class="form-input">

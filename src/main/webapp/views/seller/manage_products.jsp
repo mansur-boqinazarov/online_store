@@ -132,7 +132,7 @@
         <div class="product-details">
             <p><strong>Price:</strong> $<%= product.getProductPrice() %></p>
         </div>
-        <form method="post" action="/admin/deleteproduct">
+        <form method="post" action=${pageContext.request.contextPath}/admin/deleteproduct>
             <input type="hidden" name="productId" value="<%= product.getId() %>">
             <button type="submit" class="delete-button"><i class="fas fa-trash-alt"></i> Delete Product</button>
         </form>

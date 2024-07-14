@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .user {
+            margin: 20px;
+            border-radius: 6px;
+            width: calc(33.3% - 40px);
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0,0,0,.05), 0 0 0 1px #ddd inset;
+            position: relative;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            font-size: 0;
+            margin-right: 12px;
+        }
+
+        .user-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.05) 1%,rgba(0,0,0,0) 100%);
+        }
+
+        .user-basic-info {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .user-fullname {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: rgba(0,0,0,0.6);
+            font-size: 14px;
+        }
+
+        .user-nick {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .user-info {
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .user-info + .user-info {
+            border-top: 1px solid #efefef;
+        }
+
+        .user-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+        }
+
+        .user-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .user-remove {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 0;
+            background-color: #d80c0c;
+            box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.8), 0 0 0 5px rgba(216, 12, 12, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            opacity: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .user:hover .user-remove {
+            opacity: 1;
+        }
+
+        @media (max-width: 800px) {
+            .user {
+                width: calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .user {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="user-list"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+    const { Component, forwardRef} = React;
+    const { render } = ReactDOM;
+    const { TimelineMax, TweenMax } = gsap;
+
+    const mockData = [
+        // Your mock data here...
+    ];
+
+    const User = forwardRef((props, ref) => {
+        return (
+            <div className="user" ref={ref} id={`user-${props.id}`}>
+                <div className="user-header">
+                    <div className="user-avatar">
+                        <img
+                            src={`https://randomuser.me/api/portraits/${props.gender}/${props.id}.jpg`}
+                        />
+                    </div>
+                    <div className="user-basic-info">
+                        <div className="user-nick">{props.nick}</div>
+                        <div className="user-fullname">{props.name}</div>
+                    </div>
+                </div>
+                <div className="user-info">
+                    <span className="user-title">COMPANY</span>
+                    <span className="user-data">{props.company}</span>
+                </div>
+                <div className="user-info">
+                    <span className="user-title">EMAIL</span>
+                    <span className="user-data">{props.email}</span>
+                </div>
+                <div className="user-info">
+                    <span className="user-title">PHONE</span>
+                    <span className="user-data">{props.phone}</span>
+                </div>
+                <div className="user-info">
+                    <span className="user-title">WEBSITE</span>
+                    <span className="user-data">{props.website}</span>
+                </div>
+                <button className="user-remove" data-id={props.id} onClick={(e) => props.onRemoveUser(e)}>Remove User</button>
+            </div>
+        )
+    });
+
+    class App extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                data: mockData
+            };
+            this.userRefs = [];
+            this.handleRemoveUser = this.handleRemoveUser.bind(this);
+        }
+
+        handleRemoveUser(e) {
+            const userId = e.target.getAttribute('data-id');
+            const { data } = this.state;
+
+            const removeTimeline = new TimelineMax({ onComplete: () => {
+                    const newData = data.filter(d => d.id !== parseInt(userId));
+                    this.setState({ data: newData });
+                }});
+
+            const userRef = document.getElementById(`user-${userId}`);
+            removeTimeline
+                .set(userRef, { height: userRef.offsetHeight })
+                .set(userRef.querySelector('.user-remove'), { opacity: 0 })
+                .staggerTo(userRef.querySelectorAll('*:not(.user-remove)'), .2, { opacity: 0, y: -10 }, .02)
+                .to(userRef, .5, { width: 0, marginLeft: 0, marginRight: 0, opacity: 0 }, '-=.2');
+        }
+
+        componentDidMount() {
+            TweenMax.staggerFromTo(this.userRefs, .6, { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0 }, .15);
+        }
+
+        handleData() {
+            this.setState({ data: mockData },() => TweenMax.staggerFromTo(this.userRefs, .6, { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0 }, .15));
+        }
+
+        render() {
+            const { data } = this.state;
+            const userList = data.map((user, index) => {
+                return (
+                    <User
+                        ref={ref => this.userRefs[index] = ref}
+                        key={user.id}
+                        gender={user.id % 2 === 0 ? "men" : "women"}
+                        id={user.id}
+                        nick={user.username}
+                        name={user.name}
+                        company={user.company.name}
+                        email={user.email}
+                        phone={user.phone}
+                        website={user.website}
+                        onRemoveUser={this.handleRemoveUser}
+                    />
+                );
+            });
+
+            return (
+                <div className="user-list">
+                    {userList.length > 0 ? userList : this.handleData()}
+                </div>
+            );
+        }
+    }
+
+    render(<App />, document.getElementById("app"));
+</script>
+</body>
+</html>

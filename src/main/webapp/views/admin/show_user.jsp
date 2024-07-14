@@ -3,198 +3,173 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Todo List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #282c34;
-            color: #ffffff;
-            padding: 20px;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
+            box-sizing: border-box;
         }
 
-        .todo-container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #3a3f47;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        img {
+            max-width: 100%;
         }
 
-        .button-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .animated-button {
-            font-size: 24px;
-            padding: 15px 30px;
-            border: 2px solid #61dafb;
-            background-color: transparent;
-            color: #61dafb;
-            cursor: pointer;
-            outline: none;
-            position: relative;
+        .user {
+            margin: 20px;
+            border-radius: 6px;
+            width: calc(33.3% - 40px);
             overflow: hidden;
-            transition: color 0.4s, box-shadow 0.4s;
-            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,.05), 0 0 0 1px #ddd inset;
+            position: relative;
         }
 
-        .animated-button::before,
-        .animated-button::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #61dafb;
-            transition: transform 0.4s;
-            z-index: -1;
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            font-size: 0;
+            margin-right: 12px;
         }
 
-        .animated-button::before {
-            transform: scaleX(0);
-            border-top: 2px solid #61dafb;
-            border-bottom: 2px solid #282c34;
-        }
-
-        .animated-button::after {
-            transform: scaleY(0);
-            border-left: 2px solid #282c34;
-            border-right: 2px solid #282c34;
-        }
-
-        .animated-button:hover::before {
-            transform: scaleX(1);
-        }
-
-        .animated-button:hover::after {
-            transform: scaleY(1);
-        }
-
-        .animated-button:hover {
-            color: #282c34;
-            box-shadow: 0 0 10px #61dafb, 0 0 20px #61dafb, 0 0 30px #61dafb;
-        }
-
-        .todo-item {
-            margin-bottom: 15px;
-        }
-
-        .todo-button {
+        .user-header {
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.05) 1%,rgba(0,0,0,0) 100%);
+        }
+
+        .user-basic-info {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .user-fullname {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: rgba(0,0,0,0.6);
+            font-size: 14px;
+        }
+
+        .user-nick {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .user-info {
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            background-color: #61dafb;
-            color: #282c34;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            cursor: pointer;
-            width: 100%;
+            font-size: 15px;
         }
 
-        .todo-button:hover {
-            background-color: #51c5e7;
-            transform: scale(1.05);
+        .user-info + .user-info {
+            border-top: 1px solid #efefef;
         }
 
-        .todo-icon {
-            font-size: 20px;
-        }
-
-        .todo-details {
-            display: none;
-            padding: 15px;
-            background-color: #3a3f47;
-            border: 1px solid #555b66;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        .todo-details p {
-            margin: 5px 0;
-        }
-
-        .download-link {
-            color: #61dafb;
-            text-decoration: none;
+        .user-title {
+            font-size: 11px;
             font-weight: bold;
+            color: rgba(0,0,0,0.4);
+            letter-spacing: 1px;
         }
 
-        .delete-button {
-            background-color: transparent;
-            border: none;
-            color: #ff6b6b;
+        .user-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .user-remove {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 0;
+            background-color: #d80c0c;
+            box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.8), 0 0 0 5px rgba(216, 12, 12, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            opacity: 0;
+            outline: 0;
             cursor: pointer;
-            font-size: 14px;
-            transition: color 0.3s ease;
+            transition: .3s;
         }
 
-        .delete-button:hover {
-            color: #ff4c4c;
+        .user:hover .user-remove {
+            opacity: 1;
+        }
+
+        @media (max-width: 800px) {
+            .user {
+                width: calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .user {
+                width: calc(100% - 40px);
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="todo-container">
-    <div class="button-container">
-        <button class="animated-button">USER LIST</button>
-
-    </div>
+<div class="user-list">
     <%
         UserService userService = new UserService();
-
         List<Users> list = userService.getAllUsers();
         for (Users users : list) {
     %>
-    <div class="todo-item">
-        <button class="todo-button">
-            <span><%= users.getFullName() %></span>
-            <i class="fas fa-angle-down todo-icon"></i>
-        </button>
-        <div class="todo-details">
-            <p><strong>Email:</strong> <i><%= users.getEmail() %>
-            </i></p>
-            <p><strong>Status:</strong> <i><%= users.getStatus() %>
-            </i></p>
-            <p><strong>Phone Number:</strong> <i><%= users.getPhoneNumber() %>
-            </i></p>
-            <p><strong>Create At:</strong> <i><%= users.getCreatedAt() %>
-            </i></p>
-<%--            <button type="button" class="delete-button" onclick="<%=userService.userInActive(users.getId())%>"--%>
-
-            <%--            <form method="post" action="/admin/users">--%>
-            <%--                <input type="hidden" name="<%users.getId();%>">--%>
-            <%--            <button type="button" class="delete-button"><%users.getStatus();%></button>--%>
-            <%--            </form>--%>
+    <div class="user">
+        <div class="user-header">
+            <div class="user-avatar">
+                <img src="https://randomuser.me/api/portraits/men/<%= users.getId() %>.jpg" alt="User Avatar">
+            </div>
+            <div class="user-basic-info">
+                <div class="user-fullname"><%= users.getFullName() %></div>
+            </div>
         </div>
+        <div class="user-info">
+            <span class="user-title">EMAIL</span>
+            <span class="user-data"><%= users.getEmail() %></span>
+        </div>
+        <div class="user-info">
+            <span class="user-title">STATUS</span>
+            <span class="user-data"><%= users.getStatus() %></span>
+        </div>
+        <div class="user-info">
+            <span class="user-title">PHONE</span>
+            <span class="user-data"><%= users.getPhoneNumber() %></span>
+        </div>
+        <div class="user-info">
+            <span class="user-title">CREATED AT</span>
+            <span class="user-data"><%= users.getCreatedAt() %></span>
+        </div>
+        <button class="user-remove">Remove User</button>
     </div>
     <%
         }
     %>
 </div>
 
-
-<script>
-    document.querySelectorAll('.todo-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const details = button.nextElementSibling;
-            details.style.display = (details.style.display === 'none' || details.style.display === '') ? 'block' : 'none';
-        });
-    });
-</script>
 </body>
 </html>

@@ -59,4 +59,7 @@ public class ProductService {
                 .toList();
     }
 
+    public Product findById(String productId) {
+        return dao.findById(productId);
+    }
 }

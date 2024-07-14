@@ -91,7 +91,7 @@
         <div class="header">
             <h1>DO'KON YARATISH</h1>
         </div>
-        <form method="post" action="/seller/createstore">
+        <form method="post" action=${pageContext.request.contextPath}/seller/createstore>
             <div class="form-group">
                 <label for="shopName" class="form-label">Do'kon nomi</label>
                 <input type="text" id="shopName" name="shopName" class="form-input" required>

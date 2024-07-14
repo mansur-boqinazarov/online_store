@@ -1,6 +1,7 @@
 package uz.pdp.online_store.servlet.user;
 
 
+import jakarta.el.ELClass;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -30,13 +31,14 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("user_id", user.getId());
+        session.setAttribute("user", user);
         String id = session.getId();
         Cookie cookie = new Cookie("id", id);
 
         if (user.getRole() == Role.ADMIN){
             req.getRequestDispatcher("/views/admin/admin.jsp").forward(req,resp);
         }
-        else if(user.getRole() == Role.SELLER){
+         else if(user.getRole() == Role.SELLER){
             req.getRequestDispatcher("/views/seller/seller.jsp").forward(req,resp);
         }
         else if (user.getRole() == Role.USER) {
@@ -68,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                         </script>
                     </body>
                     </html>
-                                        """);
+                    """);
         } else {
             writer.println("""
                     <h1>failed</h1>

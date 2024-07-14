@@ -58,6 +58,6 @@ public class AddProductServlet extends HttpServlet {
         String pictureID = pictureService.addPicture(imageBytes, pictureType);
 
         service.createProduct(productName, productDescription, productPrice, productQuantity, measurement, pictureID, categoryId, shopId);
-            resp.sendRedirect("/seller");
+            resp.sendRedirect("/app/seller");
     }
 }

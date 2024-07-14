@@ -139,13 +139,13 @@
         </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/seller/createstore">
+                <a href=${pageContext.request.contextPath}/seller/createstore>
                     <button type="button" class="animated-button animate__animated animate__fadeInUp">DO'KON YARATISH</button>
                 </a>
-                <a href="/seller/mystore">
+                <a href=${pageContext.request.contextPath}/seller/mystore>
                     <button type="button" class="animated-button animate__animated animate__fadeInUp">MENING DO'KONIM</button>
                 </a>
-                <a href="/seller/addproduct">
+                <a href=${pageContext.request.contextPath}/seller/addproduct>
                     <button type="button" class="animated-button animate__animated animate__fadeInUp">MAHSULOT QO'SHISH</button>
                 </a>
             </li>
@@ -163,7 +163,7 @@
                 String base64Image = ImageUtil.getBase64Image(product.getPicture().getPicture());
         %>
         <div class="product-item">
-            <a href="/menu/productDetails?id=<%= product.getId() %>">
+            <a href="${pageContext.request.contextPath}/menu/productDetails?id=<%= product.getId() %>">
                 <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Product Image">
                 <div class="product-title"><%= product.getProductName() %></div>
             </a>
@@ -171,7 +171,7 @@
                 <p><strong>Price:</strong><%= product.getProductPrice() %> so'm</p>
             </div>
             <div class="add-to-cart">
-                <form action="/admin/deleteProduct" method="post">
+                <form action="${pageContext.request.contextPath}/admin/deleteProduct" method="post">
                     <input type="hidden" name="productId" value="<%= product.getId() %>">
                     <button type="submit">DELETE</button>
                 </form>

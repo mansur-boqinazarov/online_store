@@ -6,7 +6,7 @@
     <title>Sign Up and Login Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
-    <link rel="stylesheet" href="/resources/css/loginSignup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/loginSignup.css">
     <style>
         /* CSS for animation */
         @keyframes textChange {

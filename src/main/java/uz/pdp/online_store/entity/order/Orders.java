@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import uz.pdp.online_store.entity.auditable.Auditable;
 import uz.pdp.online_store.entity.user.Users;
+import uz.pdp.online_store.enums.OrderStatus;
 
 import java.util.List;
 
@@ -17,10 +18,25 @@ import java.util.List;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class Orders extends Auditable{
+public class Orders extends Auditable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
     private List<OrderItem> orderItems;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Users user;
-    private Integer totalPrice;
+    private Integer totalPrice = calculate();
+
+    private Integer calculate() {
+        if (orderItems == null || orderItems.isEmpty()) {
+            return 0;
+        } else {
+            return orderItems.stream()
+                    .mapToInt(orderItem -> orderItem.getProduct().getProductPrice() * orderItem.getQuantity())
+                    .sum();
+        }
+
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255) default 'NOT_ORDERED'")
+    private OrderStatus orderStatus;
 }

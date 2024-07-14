@@ -13,7 +13,6 @@
     <title>Main Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="icon" type="image/jpeg" href="./resources/sticker.png">
     <style>
         body {
             background: #141E30; /* fallback for old browsers */
@@ -83,19 +82,19 @@
 </header>
 <section class="main-section">
     <div class="button-container">
-        <a href="/admin/users">
+        <a href="${pageContext.request.contextPath}/admin/users">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Foydalanuvchilar</button>
         </a>
-        <a href="/admin/seller">
+        <a href="${pageContext.request.contextPath}/admin/seller">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Sotuvchilar</button>
         </a>
-        <a href="/admin/stores">
+        <a href="${pageContext.request.contextPath}/admin/stores">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Do'konlar</button>
     </a>
-        <a href="/admin/products">
+        <a href="${pageContext.request.contextPath}/admin/products">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Mahsulotlar</button>
         </a>
-        <a href="/admin/createCategory">
+        <a href="${pageContext.request.contextPath}/admin/createCategory">
             <button type="button" class="animated-button animate__animated animate__fadeInUp">Category yaearatish</button>
         </a>
     </div>
